@@ -15,9 +15,9 @@ This version has breaking changes — APIs, conventions, and file structure may 
 
 ## Prisma v7 (MariaDB)
 
-- Uses `prisma.config.ts` (new v7 config format)
+- Uses `prisma.config.ts` (new v7 config format) with `dotenv/config` for env loading
 - Driver adapter: `@prisma/adapter-mariadb` — PrismaClient wraps it in `src/lib/prisma.ts`
-- Custom output path: `generated/prisma` — run `npx prisma generate` before first build
+- Custom output path: `generated/prisma` (gitignored) — run `npx prisma generate` after clone
 - Schema at `prisma/schema.prisma` — MySQL provider, mixed snake_case (legacy ecommerce tables) and PascalCase (better-auth models)
 
 ## Auth
@@ -41,11 +41,16 @@ This version has breaking changes — APIs, conventions, and file structure may 
 ## Project layout
 
 - `src/app/(auth)/` — login, signup (own `<html>` layout)
-- `src/app/(front)/` — main pages (products, cart, course, about; own `<html>` layout)
-- `src/app/api/` — route handlers
+- `src/app/(front)/` — main pages (home, products, cart, course, about, contact; own `<html>` layout)
+- `src/app/api/` — route handlers (auth, contact)
 - `src/components/` — app components; `ui/` — shadcn primitives
 - `src/lib/` — shared utilities
+- `docs/` — feature specs (ADMIN-CLIENT, CONTACT) and local DB setup guide
 - `@/*` maps to `src/`
+
+## Config
+
+- `next.config.ts` — `cacheComponents: true` (Next.js 16), image `remotePatterns` for `www.fffuel.co` and `api.codingthailand.com`
 
 ## Build & deploy
 
