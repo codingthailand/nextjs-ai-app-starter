@@ -1,5 +1,7 @@
 'use client'
 
+import { Button } from "@/components/ui/button"
+
 type Props = {
   name: string;
   price: number;
@@ -9,18 +11,26 @@ type Props = {
 
 export default function AppProductCard({ name, price, stock = 0, onAddToCart }: Props) {
   return (
-    <div className="w-60 border border-green-500 rounded-lg p-6 m-6 bg-amber-100">
-      <h2>{name}</h2>
-      <p>ราคา: {price} บาท</p>
+    <div className="w-60 border border-border rounded-md bg-card p-5">
+      <div className="aspect-square rounded-sm bg-muted mb-4" />
+      <h3 className="font-heading text-[18px] font-semibold leading-[1.3] text-foreground">
+        {name}
+      </h3>
+      <p className="mt-1 text-sm text-muted-foreground">
+        ราคา: {price} บาท
+      </p>
       {
         stock > 0 && (
-          <div>
-            <p>คงเหลือ: {stock}</p>
-            <button onClick={ () => onAddToCart(name) }>เพิ่มลงตะกร้า</button>
+          <div className="mt-3">
+            <p className="text-xs text-muted-foreground mb-2">
+              คงเหลือ: {stock}
+            </p>
+            <Button size="sm" onClick={() => onAddToCart(name)}>
+              เพิ่มลงตะกร้า
+            </Button>
           </div>
         )
       }
-      
     </div>
   );
 }

@@ -24,7 +24,7 @@ const Navbar = async () => {
         <NavMenu className="hidden md:block" />
 
         <Link href="/cart">
-          <Badge className="p-2 text-md">
+          <Badge variant="outline" className="p-2 text-md">
             <ShoppingBasket /> <CountCartItem /> ชิ้น
           </Badge>
         </Link>
